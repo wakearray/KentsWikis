@@ -217,6 +217,8 @@ Error message and password prompt
 
 <li>Brandless.com</li>
 
+<li>Building Erlang For Android</li>
+
 <li>C3 Banana Split Key Switches</li>
 
 <li>Coding</li>
@@ -10240,7 +10242,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210223184527019" list="Enacl [[Luke: A New Hope]]" modified="20210223201510974" title="$:/StoryList">
+<div created="20210223184527019" list="[[Building Erlang For Android]]" modified="20210223201510974" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10363,6 +10365,89 @@ Error message and password prompt
 </div>
 <div created="20210223194702203" modified="20210223194918452" tags="[[Sustainable Products]]" title="Brandless.com" url="https://brandless.com/">
 <pre>A company whose mission is to make inexpensive and sustainable toiletry and beauty products.</pre>
+</div>
+<div created="20210223201924835" modified="20210223202048506" tags="Erlang" title="Building Erlang For Android" url="https://bluishcoder.co.nz/2015/06/21/building-erlang-for-android.html">
+<pre>Building Erlang for Android
+Support for building Erlang on Android is provided in the standard Erlang source.
+
+Build setup
+I use the Erlang git version for building. Cloning can be done with:
+
+git clone https://github.com/erlang/otp
+In the xcomp directory of the cloned repository there is an erl-xcomp-arm-android.conf file that contains details for cross compiling to Android. This can be modified per the instructions in the Erlang cross compilation documentation but the defaults are probably fine.
+
+Some environment variables need to be set to locate the Android NDK:
+
+export NDK_ROOT=/path/to/ndk/root
+export NDK_PLAT=android-21
+The NDK_PLAT environment variable identifies the Android API version to use for building. In this case android-21 is for KitKat (See STABLE-APIS.html).
+
+Add the path to the Android version of the gcc compiler:
+
+export PATH=$PATH:$NDK_ROOT/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86_64/bin
+When building from the git repository an initial step of generating configuration files needs to be done. This requires autoconf version 2.59. If autoconf2.59 is the command to run this version you may need to change some symlinks or defaults for your OS or you can edit the otp_build file to replace occurences of autoconf with autoconf2.59.
+
+Building
+Building from git requires generating build configuration files first:
+
+./otp_build autoconf
+Once generated, run the configure step. This will configure both a host version of Erlang for bootstrapping and the Android version:
+
+./otp_build configure --xcomp-conf=xcomp/erl-xcomp-arm-android.conf
+Build a bootstrap system of Erlang for the host machine, followed by one for the Android target:
+
+./otp_build boot -a
+Installing
+Installing to an Android device involves running a build step to copy the files to a temporary directory, run a script to change paths to the directory where the installation will be on the Android device and pushing the final result to the device.
+
+In the following series of commands I use /tmp/erlang as the temporary directory on the host system and /data/local/tmp/erlang as the install directory on the Android device. The directory /data/local/tmp is writable on non-rooted Android KitKat devices. It's useful for testing.
+
+./otp_build release -a /tmp/erlang
+cd /tmp/erlang
+./Install -cross -minimal /data/local/tmp/erlang
+One of the files bin/epmd is a symlink which adb push has problems with. For the copying of the files below I delete the file and manually recreate the symlink after the push:
+
+adb shell mkdir /data/local/tmp/erlang
+cd /tmp
+rm erlang/bin/epmd
+adb push erlang /data/local/tmp/erlang/
+adb shell ln -s /data/local/tmp/erlang/erts-6.4.1/bin/epmd \
+                /data/local/tmp/erlang/bin/epmd
+The adb commands assume the device is already connected and can be accessed via adb.
+
+Running
+Once the final push completes Erlang can be run via adb shell or a terminal application on the device:
+
+$ adb shell
+$ cd /data/local/tmp/erlang
+$ sh bin/erl    
+Eshell V6.4.1  (abort with ^G)
+1&gt; 
+You may get an error about sed not being found. This is due to a sed command run on the first argument of the erl shell script. A workaround for this is to build an Android version of sed and install it along with Erlang.
+
+Networking
+I've tested with some basic Erlang functionality and it works fine. Some tweaks need to be made for networking however. The method Erlang uses for DNS lookup doesn't work on Android. By default it's using native system calls. With a configuration file it can be changed to use its own internal DNS method. Create a file with the following contents:
+
+{lookup, [file,dns]}.
+{nameserver, {8,8,8,8}}.
+In this case the nameserver for DNS lookups is hardcoded to Google's DNS. Ideally this would be looked up somehow using Android functionality for whatever is configured on the phone but this works for test cases. Push this file to the device and run erl with it passed as an argument like so (inetrc is the name I used for the file in this case):
+
+$ adb push inetrc /data/local/tmp/erlang/
+$ adb shell
+$ cd/data/local/tmp/erlang
+$ sh bin/erl -kernel inetrc '&quot;./inetrc&quot;'
+Network examples should now work:
+
+1&gt; inets:start().
+ok
+2&gt; inet_res:getbyname(&quot;www.example.com&quot;,a).
+{ok,{hostent,&quot;www.example.com&quot;,[],inet,4,[{93,184,216,34}]}}
+3&gt; httpc:request(get, {&quot;http://bluishcoder.co.nz/index.html&quot;, []}, [], []).
+{ok,...}
+More information on the inetrc file format is available in the Erlang documentation.
+
+Conclusion
+This showed that a basic installation of Erlang works on Android. I've also tested on a Firefox OS phone with root access. An interesting project would be to install Erlang on either a Firefox OS or an Android AOSP build as a system service and write phone services in Erlang as a test for an Erlang based device.</pre>
 </div>
 <div created="20210223184549824" modified="20210223184935604" tags="Misc" title="C3 Banana Split Key Switches" url="https://ilumkb.com/products/gb-c-macho-switch">
 <pre>The best sounding key switches I've heard. Saw on a TikTok covering unknown key switches with nice typing sounds. Perpetually out of stock. :(</pre>
