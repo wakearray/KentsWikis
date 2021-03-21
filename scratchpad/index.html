@@ -10883,37 +10883,36 @@ BUILT TO LAST: Every NETGEAR Network switch is rigorously tested for reliability
 
 </pre>
 </div>
-<div created="20210321035943114" creator="Kent" modified="20210321040623979" modifier="Kent" tags="WakeRouter" title="NextDNS" url="https://my.nextdns.io/48aa8e/setup">
-<pre>&lt;!-- CSS only --&gt;
-&lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot; integrity=&quot;sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl&quot; crossorigin=&quot;anonymous&quot;&gt;
-&lt;!-- JavaScript Bundle with Popper --&gt;
-&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js&quot; integrity=&quot;sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
-Endpoints
-Set up NextDNS with this configuration using one of the endpoints below.
-ID
-&lt;div class=&quot;well&quot;&gt;
+<div created="20210321035943114" creator="Kent" modified="20210321041130112" modifier="Kent" tags="WakeRouter" title="NextDNS" url="https://my.nextdns.io/48aa8e/setup">
+<pre>&lt;h1&gt;Endpoints&lt;/h1&gt;
+&lt;p&gt;Set up NextDNS with this configuration using one of the endpoints below.&lt;/p&gt;
+&lt;h2&gt;ID&lt;/h2&gt;
+&lt;p&gt;
 48aa8e
-&lt;/div&gt;
-DNS-over-TLS
-48aa8e.dns.nextdns.io
-DNS-over-HTTPS
-https://dns.nextdns.io/48aa8e
-IPv6
-2a07:a8c0::48:aa8e
-2a07:a8c1::48:aa8e
+&lt;/p&gt;
+&lt;h2&gt;DNS-over-TLS&lt;/h2&gt;
+&lt;p&gt;48aa8e.dns.nextdns.io&lt;/p&gt;
+&lt;h2&gt;DNS-over-HTTPS&lt;/h2&gt;
+&lt;p&gt;https://dns.nextdns.io/48aa8e&lt;/p&gt;
+&lt;h2&gt;IPv6&lt;/h2&gt;
+&lt;p&gt;2a07:a8c0::48:aa8e&lt;br&gt;
+2a07:a8c1::48:aa8e&lt;/p&gt;
 
 
-pfSense
-1. Go to Services → DNS Resolver and on the tab General Settings scroll down to the Custom Options box.
-2. Enter the following lines:
-server:
+&lt;h1&gt;pfSense Instructions&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+Go to Services → DNS Resolver and on the tab General Settings scroll down to the Custom Options box. &lt;/li&gt;
+&lt;li&gt;Enter the following lines:
+&lt;code&gt;server:
   forward-zone:
     name: &quot;.&quot;
     forward-tls-upstream: yes
     forward-addr: 45.90.28.0#48aa8e.dns1.nextdns.io
     forward-addr: 2a07:a8c0::#48aa8e.dns1.nextdns.io
     forward-addr: 45.90.30.0#48aa8e.dns2.nextdns.io
-    forward-addr: 2a07:a8c1::#48aa8e.dns2.nextdns.io</pre>
+    forward-addr: 2a07:a8c1::#48aa8e.dns2.nextdns.io&lt;/code&gt;
+&lt;/li&gt;</pre>
 </div>
 <div created="20210308152714699" modified="20210308152954453" tags="Electronics" title="Practical Electronics Magazine" url="https://www.electronpublishing.com/product/pe-20-year-digital-bundle-1999-2018/">
 <pre>The link is to the 20 year bundle of magazines going over tons of electronics projects from 1999 to 2018. An interesting look into the home electronics hobbyist from before internet was a necessity through the advent of smart phones, to just before the covid pandemic.</pre>
