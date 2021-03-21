@@ -291,8 +291,6 @@ Error message and password prompt
 
 <li>Crunchyroll Schedule</li>
 
-<li>Draft of 'New Tiddler' by Kent</li>
-
 <li>Electronics</li>
 
 <li>Elian Script</li>
@@ -366,6 +364,8 @@ Error message and password prompt
 <li>NETGEAR 8-Port Gigabit Ethernet Unmanaged Switch (GS308)</li>
 
 <li>NETGEAR Wireless Access Point (WAX610) WiFi 6</li>
+
+<li>NextDNS</li>
 
 <li>Practical Electronics Magazine</li>
 
@@ -10371,7 +10371,7 @@ Error message and password prompt
 <div created="20210317032726987" creator="Kent" modified="20210317032726987" modifier="Kent" title="$:/state/folded/Vnopn Fanless Mini PC">
 <pre>hide</pre>
 </div>
-<div created="20210223194602541" creator="Kent" modified="20210310025149246" modifier="Kent" title="$:/state/showeditpreview">
+<div created="20210223194602541" creator="Kent" modified="20210321040203459" modifier="Kent" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
 <div created="20210222193250290" modified="20210223222714655" title="$:/state/tab--1963855381">
@@ -10452,7 +10452,7 @@ Error message and password prompt
 <div created="20210308154439796" creator="K" modified="20210308154440229" modifier="Ken" title="$:/status/UserName">
 <pre>Kent</pre>
 </div>
-<div created="20210321035933518" creator="Kent" list="WakeRouter [[Draft of 'New Tiddler' by Kent]]" modified="20210321040011024" modifier="Kent" title="$:/StoryList">
+<div created="20210321035933518" creator="Kent" list="WakeRouter NextDNS" modified="20210321040011024" modifier="Kent" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210223213428498" modified="20210223213430534" title="$:/theme">
@@ -10725,9 +10725,6 @@ This showed that a basic installation of Erlang works on Android. I've also test
 <div created="20210224032345392" modified="20210224032433860" tags="Anime" title="Crunchyroll Schedule" url="https://www.crunchyroll.com/simulcastcalendar?date=2021-02-01">
 <pre>Schedule of upcoming anime on Crunchyroll</pre>
 </div>
-<div created="20210321035943114" creator="Kent" draft.of="New Tiddler" draft.title="NextDNS" modified="20210321040002636" modifier="Kent" tags="WakeRouter" title="Draft of 'New Tiddler' by Kent" url="https://my.nextdns.io/48aa8e/setup">
-<pre></pre>
-</div>
 <div created="20210308153005476" modified="20210308153027400" tags="Projects" title="Electronics">
 <pre>&lt;ul&gt;
  &lt;$list filter=&quot;[tag[Electronics]]&quot; template=&quot;ListItemURLTemplate&quot;/&gt;
@@ -10885,6 +10882,32 @@ BUILT TO LAST: Every NETGEAR Network switch is rigorously tested for reliability
 <pre>NETGEAR Wireless Access Point (WAX610) - WiFi 6 Dual-Band AX1800 Speed | Up to 250 Client Devices | 1 x 2.5G Ethernet LAN Port | 802.11ax | Insight Remote Management | PoE+ or Optional Power Adapter
 
 </pre>
+</div>
+<div created="20210321035943114" creator="Kent" modified="20210321040220071" modifier="Kent" tags="WakeRouter" title="NextDNS" url="https://my.nextdns.io/48aa8e/setup">
+<pre>Endpoints
+Set up NextDNS with this configuration using one of the endpoints below.
+ID
+48aa8e
+DNS-over-TLS
+48aa8e.dns.nextdns.io
+DNS-over-HTTPS
+https://dns.nextdns.io/48aa8e
+IPv6
+2a07:a8c0::48:aa8e
+2a07:a8c1::48:aa8e
+
+
+pfSense
+1. Go to Services → DNS Resolver and on the tab General Settings scroll down to the Custom Options box.
+2. Enter the following lines:
+server:
+  forward-zone:
+    name: &quot;.&quot;
+    forward-tls-upstream: yes
+    forward-addr: 45.90.28.0#48aa8e.dns1.nextdns.io
+    forward-addr: 2a07:a8c0::#48aa8e.dns1.nextdns.io
+    forward-addr: 45.90.30.0#48aa8e.dns2.nextdns.io
+    forward-addr: 2a07:a8c1::#48aa8e.dns2.nextdns.io</pre>
 </div>
 <div created="20210308152714699" modified="20210308152954453" tags="Electronics" title="Practical Electronics Magazine" url="https://www.electronpublishing.com/product/pe-20-year-digital-bundle-1999-2018/">
 <pre>The link is to the 20 year bundle of magazines going over tons of electronics projects from 1999 to 2018. An interesting look into the home electronics hobbyist from before internet was a necessity through the advent of smart phones, to just before the covid pandemic.</pre>
