@@ -589,6 +589,8 @@ Error message and password prompt
 
 <li>Using JSON With PostgreSQL</li>
 
+<li>Using Sublime Text As A Script Editor</li>
+
 <li>Vattalus Starship Interiors</li>
 
 <li>Virtual Assistants</li>
@@ -10607,20 +10609,20 @@ Error message and password prompt
 <div created="20210223202447055" creator="Kent" modified="20210826023009537" modifier="Kent" title="$:/state/toc/TableOfContents-Anime--118161433">
 <pre>close</pre>
 </div>
-<div created="20210223201510178" creator="Kent" modified="20210826023010170" modifier="Kent" title="$:/state/toc/TableOfContents-Coding--118161433">
+<div created="20210223201510178" creator="Kent" modified="20210915110134189" modifier="Kent" title="$:/state/toc/TableOfContents-Coding--118161433">
 <pre>close</pre>
 </div>
 <div created="20210223185823117" creator="Kent" modified="20210826023011794" modifier="Kent" title="$:/state/toc/TableOfContents-Consumables--118161433">
 <pre>close</pre>
 </div>
-<div created="20210823140810627" creator="Kent" modified="20210826022952354" modifier="Kent" title="$:/state/toc/TableOfContents-Game Development--118161433">
-<pre>close</pre>
+<div created="20210823140810627" creator="Kent" modified="20210915110135236" modifier="Kent" title="$:/state/toc/TableOfContents-Game Development--118161433">
+<pre>open</pre>
 </div>
 <div created="20210223185833766" creator="Kent" modified="20210826022951390" modifier="Kent" title="$:/state/toc/TableOfContents-Misc--118161433">
 <pre>close</pre>
 </div>
-<div created="20210223194847980" creator="Kent" modified="20210826030539128" modifier="Kent" title="$:/state/toc/TableOfContents-Projects--118161433">
-<pre>open</pre>
+<div created="20210223194847980" creator="Kent" modified="20210915110125926" modifier="Kent" title="$:/state/toc/TableOfContents-Projects--118161433">
+<pre>close</pre>
 </div>
 <div created="20210222193529519" modified="20210222193530221" title="$:/state/toc/TableOfContents-Projects-497309061">
 <pre>close</pre>
@@ -10676,7 +10678,7 @@ Error message and password prompt
 <div created="20210308154439796" creator="K" modified="20210308154440229" modifier="Ken" title="$:/status/UserName">
 <pre>Kent</pre>
 </div>
-<div created="20210826022705379" creator="Kent" list="Unity [[Game Development]] [[Unity Assets]] [[Game Engines]]" modified="20210826030645899" modifier="Kent" title="$:/StoryList">
+<div created="20210915110136745" creator="Kent" list="[[Using Sublime Text As A Script Editor]]" modified="20210915110144965" modifier="Kent" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210223213428498" modified="20210223213430534" title="$:/theme">
@@ -11995,6 +11997,193 @@ Intro To Unity Unit Testing: https://www.raywenderlich.com/9454-introduction-to-
 </div>
 <div created="20210223205320533" modified="20210223205436028" tags="Web" title="Using JSON With PostgreSQL" url="https://www.postgresqltutorial.com/postgresql-json/">
 <pre>An instruction for using JSON in javascript to send and receive data from Postgres. </pre>
+</div>
+<div created="20210915110154450" creator="Kent" modified="20210915112836400" modifier="Kent" tags="Unity" title="Using Sublime Text As A Script Editor" url="https://wiki.unity3d.com/index.php/Using_Sublime_Text_as_a_script_editor">
+<pre>! Basic setup
+Sublime Text can be found at its official website. Download and install.
+Change your External Script Editor to Sublime Text:
+
+''Windows: '' In Unity: Edit &gt; Preferences &gt; External Tools &gt; edit &quot;External Script Editor&quot; and navigate to Sublime Text, file subl.exe
+
+To make Sublime Text jump to the file and line that causes an error/warning set the External Script Editor Args field to: `$(File):$(Line)`
+
+! Project feature setup
+Creating a project file has some advantages:
+
+* Context - specify your script folder(s) for easy search &amp; navigation between your files
+* Settings - filter out irrelevant files (e.g., .meta files)
+To create a project, use File &gt; Open Folder... to open your Unity project folder (parent of the Assets folder). Then, create a My Awesome Game.sublime-project file in your Unity project folder with Project &gt; Save Project As....
+
+Now edit that .sublime-project file with Project &gt; Edit Project. For example, the following edit will include only the /Assets/
+folder and include only c-sharp and text files:
+
+`{
+	&quot;folders&quot;:
+	[
+		{
+			&quot;path&quot;: &quot;Assets/&quot;,
+			&quot;file_include_patterns&quot;:
+			[
+				&quot;*.cs&quot;,
+				&quot;*.txt&quot;
+			]
+		}
+	]
+}`
+
+! Package Control
+Package Control is a Sublime Text package that allows for easy package management to find and install other packages. Follow the installation instructions on their site.
+
+To access the Package Control functions:
+
+* ''Preferences ''&gt; ''Package Control'' menu (ST3), or
+* Open the Command Palette
+** By one of:
+*** ''Tools ''&gt; ''Command Palette'' menu
+*** Windows/Linux `Ctrl+Shift+P` shortcut
+** Then start typing in &quot;Package Control&quot; (without the quotes).
+! Syntax highlighting
+Unity C# and JavaScript syntax highlighting
+Install the C# package (if not installed already) and the Unity3D Syntax Highlighting package, either by using Package Control or by cloning the package using Git from Github.
+
+Once installed you can select View &gt; Syntax &gt; Unity3D and then either Unity C# or Unity JavaScript. You may also want to select View &gt; Syntax &gt; Open all with current extension as... so that Sublime Text will always use Unity syntax highlighting when viewing C# or JavaScript Files.
+
+Other C# syntax highlighting compatibility
+Note that using Unity C# with Open all with current extension as..., Sublime Text will not differentiate between Unity C# files and non-Unity C# files (both use the .cs extension). One way to avoid this is to install the ApplySyntax package and add the following to its settings:
+
+&quot;syntaxes&quot;: [
+...
+{
+	// Unity 3D C# format detection.
+	&quot;name&quot;: &quot;Unity3D/UnityC#&quot;,
+	&quot;match&quot;: &quot;all&quot;,
+	&quot;rules&quot;: [
+		{&quot;file_name&quot;: &quot;.*\\.cs$&quot;},
+		{&quot;contains&quot;: &quot;using UnityEngine;\n&quot;}
+	]
+}
+...
+]
+
+(The &quot;Unity3D&quot; package might still lay compressed within Sublime Text's &quot;Installed Packages&quot; folder, which contains &quot;UnityC#.tmLanguage&quot; file that ApplySyntax will be looking for within non-existant &quot;Packages/Unity3D&quot; folder)
+
+Boo syntax highlighting
+Install one of:
+
+Boo
+Boo &amp; BooJs (includes code completions)
+Unity Shader syntax highlighting
+Install one of:
+
+Unity​3​D Shader Highlighter and Snippets
+Unity Shader (includes code completions)
+Code completions
+For simple, predefined completions, install one or more of:
+
+Unity Completions - C#, JavaScript, and Boo
+Unity Completions Light - C#, JavaScript, and Boo (if the full package is too slow to startup)
+Unity3D Snippets and Completes
+The above completions, however, are less than satisfying because they do not work across dot notation. Please read the other options below for ST2 and ST3 before deciding what to do.
+
+Advanced C# completions for Sublime Text 2
+Instead of—or in addition to—the above Unity-specific completions, you can also install the following package for dynamically reading .dll files for completion data:
+
+&quot;CompleteSharp&quot;
+Do not install the CompleteSharp version available through Package Control. The one on Package Control is the original one by &quot;quarnster&quot; but the version by &quot;ewilde&quot; (linked above) includes an already-compiled &quot;CompleteSharp.exe&quot; which makes it easier overall to install.
+
+You can install CompleteSharp via Git as described on its Github page, or you can download the Zip files and reassemble the sub-projects into their respective folders:
+
+Note that these links are to the latest master version of each project and each contains newer code than what just a Git clone of the top project will get you:
+CompleteSharp-master.zip - Unzip to Packages\CompleteSharp
+SublimeCompletionCommon-master.zip - Unzip to Packages\CompleteSharp\sublimecompletioncommon
+parsehelp-master.zip - Unzip to Packages\CompleteSharp\sublimecompletioncommon\parsehelp
+Sublime Text 3 note: If you are trying to get CompleteSharp to work in ST3, you will need the latest code from each sub-project listed above (the latest are already linked for you above). A better option for ST3, however, is described in the next section.
+To find your Packages folder to install to, go to Preferences &gt; Browse Packages....
+
+After CompleteSharp is installed, edit either your user settings or your project settings to add in the Unity assemblies and other libraries your project uses. To edit CompleteSharp settings:
+
+If using Sublime Text project feature: Project &gt; Edit Project
+If not using Sublime Text project feature: Preferences &gt; Settings - User
+The code below represents a typical minimal setup. More .dll files can be added if using packages that include them. Make sure, however, that all these files still exist in your project and your version of Unity. This list is outdated regarding the ScriptAssemblies folder. CompleteSharp may not work at all until the list of .dll files is entered without error.
+
+... represents other possible content between JSON elements.
+
+Replace &lt;path-to-Unity-folder&gt; with the path to your Unity folder (double slashed like the rest) such as C:\\Program Files\\Unity\\Editor\\Data.
+`
+{
+	...
+	&quot;folders&quot;:
+	[
+		...
+	],  //&lt;- comma required
+	...
+	&quot;settings&quot;:
+	{
+		...
+
+		// Uncomment the next line for OS X/Linux, if &quot;mono&quot; does not launch Mono in the Terminal.
+		//&quot;completesharp_mono_path&quot;: &quot;/Applications/Unity/MonoDevelop.app/Contents/MacOS/bin/MonoDevelop&quot;,
+
+		// Possible default directory paths for Unity:
+		// Windows: C:\Program Files\Unity\Editor\Data\
+		// Windows 64-bit: C:\Program Files (x86)\Unity\Editor\Data\
+		// Mac OS X: /Applications/Unity/Unity.app/Contents/Frameworks/
+
+		&quot;completesharp_assemblies&quot;: [
+			&quot;&lt;path-to-Unity-folder&gt;\\Managed\\UnityEngine.dll&quot;,
+			&quot;&lt;path-to-Unity-folder&gt;\\Managed\\UnityEditor.dll&quot;,
+			&quot;&lt;path-to-Unity-folder&gt;\\Mono\\lib\\mono\\unity\\UnityScript.dll&quot;,
+			&quot;&lt;path-to-Unity-folder&gt;\\Mono\\lib\\mono\\unity\\System.Core.dll&quot;,
+			&quot;&lt;path-to-Unity-folder&gt;\\Mono\\lib\\mono\\unity\\System.dll&quot;,
+			&quot;&lt;path-to-Unity-folder&gt;\\Managed\\nunit.framework.dll&quot;,
+			&quot;&lt;path-to-Unity-folder&gt;\\Mono\\lib\\mono\\unity\\mscorlib.dll&quot;,
+			&quot;${project_path:Library}\\ScriptAssemblies\\Assembly-CSharp.dll&quot;,
+			&quot;${project_path:Library}\\ScriptAssemblies\\Assembly-CSharp-Editor.dll&quot;,
+			&quot;${project_path:Library}\\ScriptAssemblies\\Assembly-UnityScript-Editor.dll&quot;,
+			&quot;${project_path:Library}\\ScriptAssemblies\\Assembly-CSharp-firstpass.dll&quot;
+		],
+		&quot;completioncommon_inhibit_sublime_completions&quot;: true,
+		&quot;completioncommon_shorten_names&quot;: true
+
+		...
+	}
+	...
+}
+`
+
+After saving these settings, this should automatically reload CompleteSharp's python scripts and have its autocompletion ready. To see any errors, open the console by using &lt;code&gt;Ctrl+&amp;#x60;&lt;/code&gt; (grave accent/back-tick).
+
+Advanced C# completions for Sublime Text 3
+In ST3, you can replace all of the above completion packages (Unity Completions and CompleteSharp, etc.) with a far better tool that will give Sublime Text capabilities similar to MonoDevelop or Visual Studio—including dynamic interpretation of .cs source files for code completion (but most notably missing are the API documentation excerpts next to the autocomplete hints):
+
+OmniSharp
+Go to the OmniSharp web page (linked above) and follow their instructions for installing it for Sublime Text. (Currently, this requires two packages available via Package Control, and other settings.)
+
+The listed requirement for the Mono Development Kit does not appear to be required (perhaps because Unity is installed).
+Restart ST3 for the OmniSharp local server to start running correctly.
+
+Note that if you are using the Project feature of Sublime Text (strongly recommended), you must add the location of your Unity project .sln file to the .sublime-project file (Project &gt; Edit Project):
+
+{
+	&quot;folders&quot;:
+	[
+		{
+			&quot;follow_symlinks&quot;: true,
+			&quot;path&quot;: &quot;Assets/Scripts&quot;,
+			&quot;file_exclude_patterns&quot;:
+			[
+				&quot;*.dll&quot;,
+				&quot;*.meta&quot;
+			]
+		}
+	],
+	&quot;solution_file&quot;: &quot;./My Awesome Game.sln&quot;,
+}
+OmniSharp adds several commands to the context menu in Sublime Text. Note, however, that when clicking through a bunch of these commands in a row, the OmniSharp server can stop functioning (as of v1.9.6). Thus, be careful and on the lookout for things that may stop the server. Restarting ST3 should restart the server.
+
+Other packages of interest
+C# Snippets
+Side Bar Enhancements - Provides extra options when right-clicking on a file or folder on the sidebar.</pre>
 </div>
 <div created="20210223210521319" modified="20210223210829678" tags="[[Asset Store]]" title="Vattalus Starship Interiors" url="https://assetstore.unity.com/publishers/4228">
 <pre>A very nice collection of detailed starship interiors that can be used as an art reference</pre>
