@@ -537,6 +537,8 @@ Error message and password prompt
 
 <li>nrfMicro</li>
 
+<li>ODROID RAID Devices Script</li>
+
 <li>ODROID-HC4</li>
 
 <li>Oil Cleansing</li>
@@ -10666,8 +10668,8 @@ Error message and password prompt
 <div created="20210223185833766" creator="Kent" modified="20210924233906185" modifier="Kent" title="$:/state/toc/TableOfContents-Misc--118161433">
 <pre>close</pre>
 </div>
-<div created="20210223194847980" creator="Kent" modified="20211009225513478" modifier="Kent" title="$:/state/toc/TableOfContents-Projects--118161433">
-<pre>open</pre>
+<div created="20210223194847980" creator="Kent" modified="20211009225831685" modifier="Kent" title="$:/state/toc/TableOfContents-Projects--118161433">
+<pre>close</pre>
 </div>
 <div created="20210222193529519" modified="20210222193530221" title="$:/state/toc/TableOfContents-Projects-497309061">
 <pre>close</pre>
@@ -10759,7 +10761,7 @@ Error message and password prompt
 <div created="20210308154439796" creator="K" modified="20210308154440229" modifier="Ken" title="$:/status/UserName">
 <pre>Kent</pre>
 </div>
-<div created="20211009225358716" creator="Kent" list="[[Draft of 'Projects' by Kent]] ODROID-HC4 [[How To Setup OpenVPN]]" modified="20211009225522225" modifier="Kent" title="$:/StoryList">
+<div created="20211009225358716" creator="Kent" list="[[Draft of 'Projects' by Kent]] ODROID-HC4 [[ODROID RAID Devices Script]]" modified="20211009225522225" modifier="Kent" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210223213428498" modified="20210223213430534" title="$:/theme">
@@ -11670,6 +11672,42 @@ Go to Services → DNS Resolver and on the tab General Settings scroll down to t
 <pre>A wireless alternative to the everyday Arduino Pro Micro or Elite-C.
 
 Supports fully wireless split keyboards with QMK, but China's ongoing chip shortage has made it around 40%+ more expensive assuming you can even find the Nordic wireless chip anywhere.
+
+{{!!url}}</pre>
+</div>
+<div created="20211009225840397" creator="Kent" modified="20211009230707276" modifier="Kent" tags="ODROID-HC4" title="ODROID RAID Devices Script" url="https://www.raspberrypi.org/forums/viewtopic.php?t=47312">
+<pre>Create /etc/init.d/assembleRAID:
+
+```
+# vi /etc/init.d/assembleRAID
+
+```
+
+```
+#!/bin/sh
+
+echo &quot;MDADM: Assembling RAID Arrays....&quot;
+TRIES=0
+mdadm --assemble --scan
+while [ $? -ne 0 ] &amp;&amp; [ $TRIES -lt 5 ]
+do
+	echo &quot;Waiting on drives...&quot;
+	sleep 10
+	TRIES=`expr $TRIES + 1`
+	mdadm --assemble --scan
+done	
+
+cat /proc/mdstat
+
+exit 0
+
+```
+
+```
+# chown root:root /etc/init.d/assembleRAID
+# chmod 755 /etc/init.d/assembleRAID
+# ln -s ../init.d/assembleRAID /etc/rcS.d/S08assembleRAID
+```
 
 {{!!url}}</pre>
 </div>
