@@ -637,6 +637,8 @@ Error message and password prompt
 
 <li>Using Sublime Text As A Script Editor</li>
 
+<li>Using The Quest 2 For Unity With Virtual Desktop</li>
+
 <li>Vattalus Starship Interiors</li>
 
 <li>Virtual Assistants</li>
@@ -10622,7 +10624,7 @@ Error message and password prompt
 <div created="20210807184305825" creator="Kent" modified="20210807184306474" modifier="Kent" title="$:/state/image-picker/system--1509067308">
 <pre>hide</pre>
 </div>
-<div created="20210223194602541" creator="Kent" modified="20210405130342756" modifier="Kent" title="$:/state/showeditpreview">
+<div created="20210223194602541" creator="Kent" modified="20211205182401129" modifier="Kent" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
 <div created="20210809194857927" creator="Kent" modified="20210915132847088" modifier="Kent" title="$:/state/sidebar">
@@ -10655,16 +10657,16 @@ Error message and password prompt
 <div created="20210223202447055" creator="Kent" modified="20210826023009537" modifier="Kent" title="$:/state/toc/TableOfContents-Anime--118161433">
 <pre>close</pre>
 </div>
-<div created="20210223201510178" creator="Kent" modified="20210924233938091" modifier="Kent" title="$:/state/toc/TableOfContents-Coding--118161433">
+<div created="20210223201510178" creator="Kent" modified="20211205182118683" modifier="Kent" title="$:/state/toc/TableOfContents-Coding--118161433">
 <pre>close</pre>
 </div>
 <div created="20210223185823117" creator="Kent" modified="20210826023011794" modifier="Kent" title="$:/state/toc/TableOfContents-Consumables--118161433">
 <pre>close</pre>
 </div>
-<div created="20210823140810627" creator="Kent" modified="20210924233802037" modifier="Kent" title="$:/state/toc/TableOfContents-Game Development--118161433">
-<pre>close</pre>
+<div created="20210823140810627" creator="Kent" modified="20211205182120058" modifier="Kent" title="$:/state/toc/TableOfContents-Game Development--118161433">
+<pre>open</pre>
 </div>
-<div created="20210922193325996" creator="Kent" modified="20210922193329813" modifier="Kent" title="$:/state/toc/TableOfContents-Keebs--118161433">
+<div created="20210922193325996" creator="Kent" modified="20211205182029752" modifier="Kent" title="$:/state/toc/TableOfContents-Keebs--118161433">
 <pre>close</pre>
 </div>
 <div created="20210223185833766" creator="Kent" modified="20211205181701751" modifier="Kent" title="$:/state/toc/TableOfContents-Misc--118161433">
@@ -10715,13 +10717,13 @@ Error message and password prompt
 <div created="20210823140813708" creator="Kent" modified="20210823140815120" modifier="Kent" title="$:/state/toc/TableOfContents/Game Development-Unity Assets--118161433">
 <pre>close</pre>
 </div>
-<div created="20210924233752731" creator="Kent" modified="20210924233752731" modifier="Kent" title="$:/state/toc/TableOfContents/Game Development/Game Engines-Unity--118161433">
-<pre>open</pre>
+<div created="20210924233752731" creator="Kent" modified="20211205182122339" modifier="Kent" title="$:/state/toc/TableOfContents/Game Development/Game Engines-Unity--118161433">
+<pre>close</pre>
 </div>
 <div created="20210924233749645" creator="Kent" modified="20210924233749645" modifier="Kent" title="$:/state/toc/TableOfContents/Game Development/Game Inspiration-Game Inspiration: Images--118161433">
 <pre>open</pre>
 </div>
-<div created="20210922193328371" creator="Kent" modified="20210922193329411" modifier="Kent" title="$:/state/toc/TableOfContents/Keebs-Boards--118161433">
+<div created="20210922193328371" creator="Kent" modified="20211205182028752" modifier="Kent" title="$:/state/toc/TableOfContents/Keebs-Boards--118161433">
 <pre>close</pre>
 </div>
 <div created="20210924233900646" creator="Kent" modified="20210924233904357" modifier="Kent" title="$:/state/toc/TableOfContents/Misc-Virtual Assistants--118161433">
@@ -10763,7 +10765,7 @@ Error message and password prompt
 <div created="20210308154439796" creator="K" modified="20210308154440229" modifier="Ken" title="$:/status/UserName">
 <pre>Kent</pre>
 </div>
-<div created="20211205181659548" creator="Kent" list="Misc [[Torrent Sites]]" modified="20211205181659548" modifier="Kent" title="$:/StoryList">
+<div created="20211205181659548" creator="Kent" list="Unity [[Using The Quest 2 For Unity With Virtual Desktop]]" modified="20211205182551206" modifier="Kent" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210223213428498" modified="20210223213430534" title="$:/theme">
@@ -12309,6 +12311,45 @@ OmniSharp adds several commands to the context menu in Sublime Text. Note, howev
 * ''Side Bar Enhancements'' - Provides extra options when right-clicking on a file or folder on the sidebar.
 
 Source: {{!!url}}</pre>
+</div>
+<div created="20211205182130945" creator="Kent" modified="20211205182622659" modifier="Kent" tags="Unity" title="Using The Quest 2 For Unity With Virtual Desktop" url="https://thomassteffen.medium.com/using-the-oculus-quest-2-wirelessly-for-unity-with-virtual-desktop-4eb9a0ebc617">
+<pre>Normally, you would have to test your program with the wired USB connection by navigating to the Build Settings, locate Platform, select Android, then setting Run Device to Oculus.
+A major problem with this method is that sometimes your connection can be lost, this could be due to pulling on the wire, an older wire, the headset shutting off, or anything else that can cause a disconnect. Once you reconnect your device, Unity may not recognize it unless you exit out of Unity and reload your project. You can imagine how frustrating this can quickly become when frequently testing/running your scene.
+Wouldn’t it be a lot easier to put your wireless headset on, hit the play button in Unity, and test your application just like any other non-vr app you’ve developed?
+To get started, you will need to purchase Virtual Desktop from the Oculus store. This is normally priced at $19.99. For purposes outside of Unity, Virtual Desktop can be very useful for remote use and to even access and play your Steam VR library/games wirelessly. You should install this on your headset, as well as the desktop version(free) on your PC.
+
+In this example, I am using Unity version 2019.4.20f1. I have downloaded and installed the Oculus Integration package found on Unity Asset Store or at https://developer.oculus.com/downloads/package/unity-integration/.
+In Unity, Enable Virtual Reality (VR) Support
+Use XR Plugin Framework (only available in Unity versions 2019.3 and higher):
+From the menu, go to Edit &gt; Project Settings.
+From the left navigation pane, select XR Plugin Management, and click Install XR Plugin Management.
+Click the Android tab and select Oculus to install the Oculus XR plugin, which enables the VR support.
+From the left navigation pane, under XR Plugin Management, click Oculus to open and modify the default settings.
+
+Set your Oculus device into developer mode:
+Turn on the headset you want to use for development.
+Open the Oculus app on your phone and go to Settings.
+Tap the device and go to More Settings &gt; Developer Mode.
+Slide the Developer Mode toggle.
+Connect your headset to the computer using a USB-C cable and wear the headset.
+Accept Allow USB Debugging and Always allow from this computer when prompted on the headset.
+
+You’ll want to make sure you’ve opened Virtual Desktop on your PC.
+Last, open your project from command prompt by using an injection method. You should type it in this structure:
+Locate your Virtual Desktop executable. Mine is at “D:\Virtual Desktop Streamer\VirtualDesktop.Streamer.exe”, your location may differ.
+You’ll need to locate your file path for the desired version of Unity. Mine is at “C:\Users\TStef\OneDrive\Documents\UnityProjects\2019.4.20f1\Editor\Unity.exe”.
+You’ll need the folder path of your project. My current project is located at “D:\UnityProjects\VRIT_V2”.
+Note: If you encounter any errors, make sure there are no type-o’s and try removing the whitespaces from your folder and filenames.
+Now that you know your file paths, you can type out the command like this:
+“Virtual Desktop file location” “Unity editor file location” -projectpath “project folder path” useHub -hubIPC -cloudEnvironment production
+For example, my project would be typed out like this:
+“D:\Virtual Desktop Streamer\VirtualDesktop.Streamer.exe” “C:\Users\TStef\OneDrive\Documents\UnityProjects\2019.4.20f1\Editor\Unity.exe” -projectpath “D:\UnityProjects\VRIT_V2” useHub -hubIPC -cloudEnvironment production
+You may not need “-useHub -hubIPC -cloudEnvironment production” in your command, but some people have reported that this cleared up some HMD detection issues.
+
+Unity should now open with your VR project. Now turn your headset on, make sure it is not in sleep mode. Launch Virtual Desktop on the headset. Press Play in Unity, you should now be playing your scene wirelessly.
+Note: If it doesn’t work the first time, you may need to click Stop, then click Play again to allow it to finish initializing.
+
+{{!!url}}</pre>
 </div>
 <div created="20210223210521319" modified="20210223210829678" tags="[[Asset Store]]" title="Vattalus Starship Interiors" url="https://assetstore.unity.com/publishers/4228">
 <pre>A very nice collection of detailed starship interiors that can be used as an art reference</pre>
