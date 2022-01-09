@@ -10989,7 +10989,7 @@ Error message and password prompt
 <div created="20210308154439796" creator="K" modified="20210308154440229" modifier="Ken" title="$:/status/UserName">
 <pre>Kent</pre>
 </div>
-<div created="20220106045148047" creator="Kent" list="Anime [[Crunchyroll Schedule]]" modified="20220106045802171" modifier="Kent" title="$:/StoryList">
+<div created="20220109005557266" creator="Kent" list="[[Fast Platform Switching in Unity]]" modified="20220109005557266" modifier="Kent" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210223213428498" modified="20210223213430534" title="$:/theme">
@@ -11474,28 +11474,21 @@ Starting at $18/month
 
 {{!!url}}</pre>
 </div>
-<div created="20210808004553994" creator="Kent" modified="20210826030614565" modifier="Kent" tags="Unity" title="Fast Platform Switching in Unity" url="http://blog.deozaan.com/2014/09/22/fast-platform-switching-in-unity-made-easier/">
-<pre>! The Problem
-Unity is a great tool for multi-platform game development. That said, it does have room for improvement. One of the really annoying things about Unity is that the longest part of making builds or even just testing can occur when switching platforms from e.g., Standalone to Android. Unity rebuilds the entire asset library every time this switch takes place. And this can take a very long time, especially as the project grows larger.
-
-!!! A Note
-In this post I will be talking only about switching to/from Android because:
-
-# I haven’t noticed a problem when switching from Standalone (Win/OSX/Linux) to WebPlayer.
-# The only platform I develop for other than Standalone or WebPlayer is Android.
-In other words, while this problem might also occur when switching to/from iOS or Windows Phone, etc., I haven’t personally experienced that so I can’t comment on it. That said, the information in this post should work for those platforms just as well as it does for Android.
-
-! The Ideal Solution
-What Unity should do, in my opinion, is to keep separate subfolders in the Library for different platforms. This way we won’t have to wait while the entire library is deleted and rebuilt when switching platforms. We’ll only need to have new or changed assets (re)import when changing platforms.
-
-Unfortunately, Unity doesn’t do this, so we need to find a workaround.
-
-The good news is that there is a workaround.
-
-! The Workaround
-A blogger over at CliffordRoche.ca wrote about Fast Platform Switching in Unity by making a copy of the project folder, but using Junctions to keep from having to duplicate or sync the Assets and ProjectSettings folders between the two projects. Pretty smart idea.
+<div created="20210808004553994" creator="Kent" modified="20220109012319938" modifier="Kent" tags="Unity" title="Fast Platform Switching in Unity" url="http://blog.deozaan.com/2014/09/22/fast-platform-switching-in-unity-made-easier/">
+<pre>A blogger over at CliffordRoche.ca wrote about Fast Platform Switching in Unity by making a copy of the project folder, but using Junctions to keep from having to duplicate or sync the Assets and ProjectSettings folders between the two projects. Pretty smart idea.
 
 His instructions work well, but the process can be made even easier (at least on Windows) through the Link Shell Extension which allows you to make Junctions, Symbolic Links, Hardlinks, etc., with just a few clicks with the mouse.
+
+! The Process
+
+* Create a new project folder.
+* Copy everything except the Assets and Project Settings folders.
+* Create junctions for the Assets and Project settings folders in the new project folder.
+** Right click the folder you want.
+** Select 'Pick Link Source'
+** Go to new project folder and right click
+** Select 'Drop as' and 'Junction'
+* Open new project and switch build to other platform.
 
 ! The Tutorial
 I made a video explaining all the details, which you can watch below:
